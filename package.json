@@ -7,6 +7,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.15",
     "vue": "^3.2.25"
   },
   "devDependencies": {
