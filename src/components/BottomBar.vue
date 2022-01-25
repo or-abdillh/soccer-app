@@ -2,7 +2,7 @@
   <!-- Wrapper -->
   <div class="fixed bottom-0 left-0 right-0">
     <!-- Bottom bar -->
-    <div class="bg-slate-800 bg-opacity-75 px-5 py-3 flex justify-between">
+    <div class="bg-slate-800 bg-opacity-100 px-5 py-3 flex justify-between">
       <template v-for="(menu, index) in menus" :key="index">
         <div
           @click="menuActive = menu.name"
