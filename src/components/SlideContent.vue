@@ -2,6 +2,17 @@
 	import { useRouter } from 'vue-router'
 
 	const router = useRouter()
+
+	const readMore = content => {
+		setTimeout(() => {
+			router.push({
+				name: 'Read',
+				params: {
+					content
+				}
+			})
+		}, 500)
+	}
 	
   defineProps({
     content: {
@@ -11,7 +22,7 @@
 </script>
 
 <template>
-	<section @click="router.push({ name: 'Read', params: { key: content.title } })" class="relative">
+	<section @click="readMore(content)" class="relative active:scale-75 pointer duration-300">
 		<img :src="content.imageUrl" class="w-full rounded-xl"/>
 		<div class="absolute inset-0 px-4 py-3 text-gray-50 flex justify-center flex-col">
 			<h1 class="font-medium mb-3">{{ content.title }}</h1>
