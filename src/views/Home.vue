@@ -18,7 +18,7 @@
         Recomended
         <i class="fa fa-chevron-right"></i>
       </span>
-      <Slides :slides="example"/>
+      <Slides :slides="headlines"/>
     </section>
     
     <!-- List card -->
@@ -37,8 +37,16 @@
 </template>
 
 <script setup>
-  import { onMounted, ref } from 'vue'
+  import { onMounted, ref, computed } from 'vue'
+  import { topHeadlines } from '@/API/topHeadlines.js'
   import Slides from '@/components/Slides.vue'
   import ListCard from '@/components/ListCard.vue'
   import example from '@/example.js'
+
+	const headlines = ref(null)
+  onMounted(() => {
+  	topHeadlines(headlines)
+  })
+  
+
 </script>

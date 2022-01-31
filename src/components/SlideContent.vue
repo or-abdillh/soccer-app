@@ -8,7 +8,7 @@
 			router.push({
 				name: 'Read',
 				params: {
-					content
+					content: JSON.stringify(content)
 				}
 			})
 		}, 500)
@@ -23,16 +23,16 @@
 
 <template>
 	<section @click="readMore(content)" class="relative active:scale-75 pointer duration-300">
-		<img :src="content.imageUrl" class="w-full rounded-xl"/>
+		<img :src="content.urlToImage" class="w-full rounded-xl"/>
 		<div class="absolute inset-0 px-4 py-3 text-gray-50 flex justify-center flex-col">
 			<h1 class="font-medium mb-3">{{ content.title }}</h1>
 			<small class="text-gray-200">
 				<i class="fa fa-user mr-1"></i>
-				{{ content.creator.join(' | ') }}
+				{{ content.author }}
 			</small>
 			<small class="text-gray-200">
 				<i class="fa fa-clock mr-1"></i>
-				{{ content.pubDate }}
+				{{ new Date(content.publishedAt).toLocaleString('id') }}
 			</small>
 		</div>
 	</section>
