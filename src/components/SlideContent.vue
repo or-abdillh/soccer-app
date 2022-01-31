@@ -1,4 +1,8 @@
 <script setup>  
+	import { useRouter } from 'vue-router'
+
+	const router = useRouter()
+	
   defineProps({
     content: {
       type: Object
@@ -7,9 +11,9 @@
 </script>
 
 <template>
-	<section class="relative">
+	<section @click="router.push({ name: 'Read', params: { key: content.title } })" class="relative">
 		<img :src="content.imageUrl" class="w-full rounded-xl"/>
-	 	<div class="absolute inset-0 px-4 py-3 text-gray-50 flex justify-center flex-col">
+		<div class="absolute inset-0 px-4 py-3 text-gray-50 flex justify-center flex-col">
 			<h1 class="font-medium mb-3">{{ content.title }}</h1>
 			<small class="text-gray-200">
 				<i class="fa fa-user mr-1"></i>
@@ -19,8 +23,8 @@
 				<i class="fa fa-clock mr-1"></i>
 				{{ content.pubDate }}
 			</small>
-	 </div>
- </section>
+		</div>
+	</section>
 </template>
 
 <style scoped>

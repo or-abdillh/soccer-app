@@ -1,6 +1,6 @@
 <template>
   <!-- Wrapper -->
-  <div class="fixed bottom-0 left-0 right-0">
+  <div v-if="currentPath !== 'Read'" class="fixed bottom-0 left-0 right-0">
     <!-- Bottom bar -->
     <div class="bg-slate-800 bg-opacity-100 px-5 py-3 flex justify-between">
       <template v-for="(menu, index) in menus" :key="index">
@@ -18,9 +18,12 @@
 
 <script setup>
   
-  import { ref } from 'vue'
+  import { ref, computed } from 'vue'
+  import { useRoute } from 'vue-router'
   import menus from '@/menu.js'
-  
+
+  const route = useRoute()
+  const currentPath = computed(() => route.name)
   const menuActive = ref('Home');
   
 </script>
