@@ -37,10 +37,8 @@
 </template>
 
 <script setup>
+  import { onMounted, ref } from 'vue'
   import Slides from '@/components/Slides.vue'
   import ListCard from '@/components/ListCard.vue'
   import example from '@/example.js'
-  import { onMounted } from 'vue'
-  
-  
 </script>
