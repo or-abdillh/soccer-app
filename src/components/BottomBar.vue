@@ -8,7 +8,11 @@
           @click="move(menu)"
           :class="menuActive === menu.name ? 'text-green-400 font-medium tracking-wide' : 'text-gray-500'"
           class="active:scale-75 duration-300 flex flex-col items-center">
-          <i class=" text-2xl" :class="menu.icon"></i>
+          <i class=" text-2xl relative" :class="menu.icon">
+						<span class="absolute top-0 -right-2 bg-red-700 opacity-75 rounded-full text-xs text-gray-200 px-1" v-if="menu.name === 'Colections'">
+							{{ collections.lists.length }}
+						</span>
+          </i>
           <small>{{ menu.name }}</small>
         </div>
       </template>
@@ -28,18 +32,24 @@
 
   const move = menu => {
   	menuActive.value = menu.name
+  	collections.value = JSON.parse(localStorage.getItem('$collections'))
+  	
   	setTimeout(() => {
   		router.push({ name: menu.path })
   	}, 500)
   }
 
 	const pathName = computed(() => route.name)
+	const collections = ref()
+
+	watch(pathName, val => collections.value = JSON.parse(localStorage.getItem('$collections')))
+	
   const usingBottomBar = computed(() => {
   	if (
   		menus.filter(menu => menu.name === pathName.value).length > 0
   	) return true
   	else return false
   })
-	
-	
+
+  
 </script>

@@ -7,6 +7,20 @@
 	const content = computed(() => JSON.parse(route.params.content))
 
 	const isButtonClick = ref(false)
+	
+	const save = item => {
+		isButtonClick.value = !isButtonClick.value
+		
+		const collections = JSON.parse(
+			localStorage.getItem('$collections')
+		)
+
+		if ( collections.lists.filter(list => list.title === item.title).length === 0 ) {
+			collections.lists.push(item)
+		}
+		
+		localStorage.setItem('$collections', JSON.stringify(collections))
+	}
 </script>
 
 <template>
@@ -26,7 +40,7 @@
 			<div class="w-full md:w-8/12 lg:w-4/12 xl:w-3/12 mx-auto flex gap-2 justify-between">
 				<a :href="content.url" class="w-10/12 bg-green-500 text-gray-100 block hover:bg-opacity-75 active:scale-90 duration-300 text-center text-xl font-medium py-2 rounded">Read more</a>
 				
-				<button @click="isButtonClick = !isButtonClick" class="mini-button">
+				<button @click="save(content)" class="mini-button">
 					<i :class="isButtonClick ? 'fas' : 'far'" class="fa-heart"></i>
 				</button>
 				

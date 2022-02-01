@@ -11,3 +11,9 @@ createApp(App)
 .use(createPinia())
 .use(router)
 .mount('#app')
+
+if ( localStorage.getItem('$collections') == null ) {
+	localStorage.setItem('$collections', JSON.stringify({
+		lists: []
+	}))
+}
