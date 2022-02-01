@@ -18,9 +18,9 @@ const menus = [
     path: 'Standings'
   },
   {
-    name: 'Colections',
+    name: 'Collections',
     icon: 'fab fa-gratipay',
-    path: 'Colections'
+    path: 'Collections'
   }
 ]
 

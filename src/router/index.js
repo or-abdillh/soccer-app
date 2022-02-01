@@ -12,6 +12,11 @@ const routes = [
 		name: 'Read',
 		path: '/read',
 		component: () => import('@/views/Read.vue')
+	},
+	{
+		name: 'Collections',
+		path: '/collections',
+		component: () => import('@/views/Collections.vue')
 	}
 ]
 
