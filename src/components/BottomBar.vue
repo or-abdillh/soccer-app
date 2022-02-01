@@ -1,6 +1,6 @@
 <template>
   <!-- Wrapper -->
-  <div class="fixed bottom-0 left-0 right-0">
+  <main v-if="usingBottomBar" class="fixed bottom-0 left-0 right-0">
     <!-- Bottom bar -->
     <div class="w-full md:w-8/12 lg:w-4/12 xl:w-3/12 mx-auto bg-slate-800 bg-opacity-100 px-5 py-3 flex justify-between">
       <template v-for="(menu, index) in menus" :key="index">
@@ -13,16 +13,17 @@
         </div>
       </template>
     </div>
-  </div>
+  </main>
 </template>
 
 <script setup>
   
-  import { ref, computed } from 'vue'
-  import { useRouter } from 'vue-router'
+  import { ref, computed, onMounted, watch } from 'vue'
+  import { useRouter, useRoute } from 'vue-router'
   import menus from '@/menu.js'
 
   const router = useRouter()
+  const route = useRoute()
   const menuActive = ref('Home');
 
   const move = menu => {
@@ -31,5 +32,14 @@
   		router.push({ name: menu.path })
   	}, 500)
   }
-  
+
+	const pathName = computed(() => route.name)
+  const usingBottomBar = computed(() => {
+  	if (
+  		menus.filter(menu => menu.name === pathName.value).length > 0
+  	) return true
+  	else return false
+  })
+	
+	
 </script>

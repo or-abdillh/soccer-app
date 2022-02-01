@@ -35,6 +35,6 @@
 	      <small class="text-gray-300 text-xs">By {{ list.author }} - {{ list.source.name }}</small>
 	    </div> 
 	  </section>
-	  <p class="text-xs text-gray-100">{{ list.description }}</p>
+	  <p class="text-xs text-gray-100">{{ list.description.split('').splice(0, 100).join('') }}...</p>
   </main>
 </template>
