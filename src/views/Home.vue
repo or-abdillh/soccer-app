@@ -1,4 +1,5 @@
 <template>
+	<loader v-if="headlines.news.length <= 0 && otherNews.news.length <= 0 " object="#ff9633" color1="#ffffff" color2="#17fd3d" size="5" speed="2" bg="#343a40" objectbg="#999793" opacity="90" name="circular"></loader>
   <main class="pb-24">
     <!-- Brand -->
     <div class="flex gap-2 items-center justify-between">
