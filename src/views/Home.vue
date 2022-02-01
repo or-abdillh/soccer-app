@@ -18,7 +18,7 @@
         Recomended
         <i class="fa fa-chevron-right"></i>
       </span>
-      <Slides :slides="headlines"/>
+      <Slides :slides="headlines.news"/>
     </section>
     
     <!-- List card -->
@@ -27,26 +27,27 @@
         Other news
         <i class="fa fa-chevron-down"></i>
       </span>
-      <template v-for="list in 3" :key="list">
-        <template v-for="(list, index) in example" :key="index">
-          <ListCard :list="list" />
-        </template>
-      </template>
+			<template v-for="(list, index) in otherNews.news" :key="index">
+				<ListCard :list="list" />
+			</template>
     </section>
   </main>
 </template>
 
 <script setup>
   import { onMounted, ref, computed } from 'vue'
-  import { topHeadlines } from '@/API/topHeadlines.js'
+  import { useHeadlines } from '@/stores/headlines'
+  import { useOtherNews } from '@/stores/otherNews'
   import Slides from '@/components/Slides.vue'
   import ListCard from '@/components/ListCard.vue'
   import example from '@/example.js'
 
-	const headlines = ref(null)
-  onMounted(() => {
-  	topHeadlines(headlines)
-  })
+  const headlines = useHeadlines()
+  const otherNews = useOtherNews()
   
+  onMounted(() => {
+  	headlines.fillHeadlines()
+  	otherNews.fillOtherNews()
+  })
 
 </script>

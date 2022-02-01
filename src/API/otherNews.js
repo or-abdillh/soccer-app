@@ -1,9 +1,9 @@
 import { news } from '@/config.js'
 import axios from 'axios'
 
-export const topHeadlines = state => {
+export const otherNews = state => {
 	//Get top Headlines
- 	axios.get(`${news.endpoint}/top-headlines?category=sports&q=soccer&pageSize=5&apiKey=${news.apiKey}`)
+ 	axios.get(`${news.endpoint}/everything?q=soccer&pageSize=12&apiKey=${news.apiKey}`)
  		.then(res => {
  			state.news = res.data.articles
  		})
