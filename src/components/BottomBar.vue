@@ -28,7 +28,7 @@
 
   const router = useRouter()
   const route = useRoute()
-  const menuActive = ref('Home');
+  const menuActive = computed(() => route.name);
 
   const move = menu => {
   	menuActive.value = menu.name
