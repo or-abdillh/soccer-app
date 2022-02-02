@@ -10,7 +10,7 @@
 
 		<section class="mt-8">
 			<template v-for="list in collections.lists.reverse()" :key="list">
-				<CollectionList :content="list" />
+				<CollectionList :content="list" v-on:remove="fillCollections" />
 			</template>
 		</section>
 	</main>
@@ -22,8 +22,13 @@
 	import CollectionList from '@/components/CollectionList.vue'
 
 	const collections = ref(null)
-	collections.value = JSON.parse(
-		localStorage.getItem('$collections')
-	)
+	
+	const fillCollections = () => {
+		collections.value = JSON.parse(
+			localStorage.getItem('$collections')
+		)
+	}
+
+	fillCollections()
 
 </script>
